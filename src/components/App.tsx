@@ -2,6 +2,7 @@ import './App.css.scss';
 import { useState } from 'react';
 import TodoList from "./TodoList";
 import InputField from "./InputField";
+import Header from "./Header";
 import {
   TodoTextType,
   TodosType
@@ -42,7 +43,8 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="app">
+      <Header />
       <InputField text = {text} handleInput = {setText} handleSubmit = {addTodo}/>
       <TodoList todos={todos} toggleTodoComplete={toggleTodoComplete} removeTodo={removeTodo}/>
     </div>

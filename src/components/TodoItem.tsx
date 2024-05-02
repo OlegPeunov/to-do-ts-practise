@@ -1,4 +1,16 @@
-const TodoItem = ({id, text, completed, removeTodo, toggleTodoComplete}) => {
+
+import {FC} from 'react';
+
+type TodoItemProps = {
+  id: string,
+  text: string,
+  completed: boolean,
+  removeTodo: (todoId: string) => void,
+  toggleTodoComplete: (todoId: string) => void
+
+};
+
+const TodoItem: FC <TodoItemProps> = ({id, text, completed, removeTodo, toggleTodoComplete}) => {
   return (
     <li key = {id}>
       <input type = 'checkbox' checked={completed} onChange={() => toggleTodoComplete(id)}></input>

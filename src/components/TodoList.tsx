@@ -6,15 +6,15 @@ import {
   TodosType
 } from './todo.data';
 
-type TodoListType  = {
+type TodoListProps  = {
   todos: TodosType,
   removeTodo: (todoId: string) => void,
   toggleTodoComplete: (todoId: string) => void
 };
 
-const Todolist: FC <TodoListType> = ({todos, removeTodo, toggleTodoComplete}) => {
+const Todolist: FC <TodoListProps> = ({todos, removeTodo, toggleTodoComplete}) => {
   return (
-    <ul>
+    <ul className='app-list'>
       {
         todos.map((todo: TodoType) => <TodoItem key={todo.id} {...todo} toggleTodoComplete={toggleTodoComplete} removeTodo={removeTodo}/>)
       }  

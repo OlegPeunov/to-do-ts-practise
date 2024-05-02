@@ -1,14 +1,24 @@
-.App {
+.app {
   text-align: center;
+
+  &-header {
+    background-color: #282c34;
+    min-height: 100px;
+  }
+  &-input {
+    position: relative;
+    top: 10px;
+  }
+  &-list{
+    position: relative;
+    top: 18px;
+    list-style: none;
+  }
 }
 
 .app-header {
   background-color: #282c34;
-  min-height: 100px;
-}
-
-ul{
-  list-style: none;
+  min-height: 50px;
 }
 
 li {
