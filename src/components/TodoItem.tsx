@@ -12,10 +12,10 @@ type TodoItemProps = {
 
 const TodoItem: FC <TodoItemProps> = ({id, text, completed, removeTodo, toggleTodoComplete}) => {
   return (
-    <li key = {id}>
+    <li className='todo'key = {id}>
       <input type = 'checkbox' checked={completed} onChange={() => toggleTodoComplete(id)}></input>
-      <span>{text}</span>
-      <span className='delete' onClick={() => removeTodo(id)}>&times;</span>
+      <span className='todo__text'>{text}</span>
+      <span className='todo__delete' onClick={() => removeTodo(id)}>&times;</span>
     </li>
   )
 }

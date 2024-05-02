@@ -2,7 +2,7 @@ import {FC} from 'react';
 
 const Header: FC = () => {
   return (
-    <header className='app-header'></header>
+    <header className='app__header'></header>
   )
 }
 

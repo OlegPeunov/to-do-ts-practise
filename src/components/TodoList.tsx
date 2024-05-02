@@ -14,7 +14,7 @@ type TodoListProps  = {
 
 const Todolist: FC <TodoListProps> = ({todos, removeTodo, toggleTodoComplete}) => {
   return (
-    <ul className='app-list'>
+    <ul className='app__todos'>
       {
         todos.map((todo: TodoType) => <TodoItem key={todo.id} {...todo} toggleTodoComplete={toggleTodoComplete} removeTodo={removeTodo}/>)
       }  

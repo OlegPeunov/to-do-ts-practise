@@ -8,7 +8,7 @@ type InputFieldProps  = {
 
 const InputField: FC <InputFieldProps> = ({text, handleInput, handleSubmit}) => {
   return (
-    <label className='app-input'>
+    <label className='app__input'>
       <input value={text} onChange={(e) => handleInput(e.target.value)}></input>
       <button onClick = {handleSubmit}>Add Todo</button>
     </label>
