@@ -1,43 +1,47 @@
 import './App.css.scss';
 import { useState } from 'react';
 import TodoList from "./TodoList";
-import InputField from "./InputField";
+import TaskInput from "./TaskInput";
 import Header from "./Header";
 import {
   TodoTextType,
   TodosType
-} from './todo.data';
+} from './types';
 
 function App() {
-  const [todos, setToDos] = useState<TodosType>([]);
-  const [text, setText] = useState<TodoTextType>('');
+  const [todos, hadleSetToDos] = useState<TodosType>([]);
+  const [text, hadleSetText] = useState<TodoTextType>('');
 
-  const addTodo = () => {
+  const handleUpdateTodos = (text: string) => {
+    hadleSetToDos([
+      ...todos, {
+        id: new Date().toISOString(),
+        text,
+        isCompleted: false
+      }
+    ]);
+  }
+
+  const handleAddTodo = () => {
     if(text.trim().length !== 0){
-      setToDos([
-        ...todos, {
-          id: new Date().toISOString(),
-          text,
-          completed: false
-        }
-      ]);
-      setText('');
+      handleUpdateTodos(text)
+      hadleSetText('');
     }
   };
 
-  const removeTodo = (todoId: string) => {
-    setToDos(todos.filter((todo) => todo.id !== todoId))
+  const handleRemoveTodo = (todoId: string) => {
+    hadleSetToDos(todos.filter((todo) => todo.id !== todoId))
   }
 
-  const toggleTodoComplete = (todoId: string) => {
-    setToDos(todos.map((todo) => {
+  const handelToggleTodoComplete = (todoId: string) => {
+    hadleSetToDos(todos.map((todo) => {
       if(todo.id !== todoId){
         return todo;
       }
       
       return {
         ...todo,
-        completed: !todo.completed
+        isCompleted: !todo.isCompleted
       }
     }))
   }
@@ -45,8 +49,8 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <InputField text = {text} handleInput = {setText} handleSubmit = {addTodo}/>
-      <TodoList todos={todos} toggleTodoComplete={toggleTodoComplete} removeTodo={removeTodo}/>
+      <TaskInput text = {text} onAddTodo = {handleAddTodo} onSetText = {hadleSetText} />
+      <TodoList todos={todos} onToggleTodoComplete={handelToggleTodoComplete} onRemoveTodo={handleRemoveTodo}/>
     </div>
   );
 };

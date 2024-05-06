@@ -4,19 +4,19 @@ import {FC} from 'react';
 import {
   TodoType,
   TodosType
-} from './todo.data';
+} from './types';
 
 type TodoListProps  = {
   todos: TodosType,
-  removeTodo: (todoId: string) => void,
-  toggleTodoComplete: (todoId: string) => void
+  onRemoveTodo: (todoId: string) => void,
+  onToggleTodoComplete: (todoId: string) => void
 };
 
-const Todolist: FC <TodoListProps> = ({todos, removeTodo, toggleTodoComplete}) => {
+const Todolist: FC <TodoListProps> = ({todos, onRemoveTodo, onToggleTodoComplete}) => {
   return (
     <ul className='app__todos'>
       {
-        todos.map((todo: TodoType) => <TodoItem key={todo.id} {...todo} toggleTodoComplete={toggleTodoComplete} removeTodo={removeTodo}/>)
+        todos.map((todo: TodoType) => <TodoItem key={todo.id} {...todo} onToggleTodoComplete={onToggleTodoComplete} onRemoveTodo={onRemoveTodo}/>)
       }  
     </ul>
   )

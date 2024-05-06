@@ -1,17 +1,15 @@
 import {FC} from 'react';
 
-type InputFieldProps  = {
+type fieldProps  = {
   text: string,
-  handleInput: (text: string) => void,
-  handleSubmit: () => void
+  onSetText: (text: string) => void
 };
 
-const InputField: FC <InputFieldProps> = ({text, handleInput, handleSubmit}) => {
+const InputField: FC <fieldProps> = ({text, onSetText}) => {
+  const handleonChange = (event: React.ChangeEvent<HTMLInputElement>) => onSetText(event.target.value)
+
   return (
-    <label className='app__input'>
-      <input value={text} onChange={(e) => handleInput(e.target.value)}></input>
-      <button onClick = {handleSubmit}>Add Todo</button>
-    </label>
+    <input value={text} onChange = { handleonChange }></input>
   )
 }
 
