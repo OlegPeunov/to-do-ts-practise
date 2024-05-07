@@ -1,15 +1,15 @@
 import {FC} from 'react';
 
-type fieldProps  = {
+type FieldProps  = {
   text: string,
   onSetText: (text: string) => void
 };
 
-const InputField: FC <fieldProps> = ({text, onSetText}) => {
-  const handleonChange = (event: React.ChangeEvent<HTMLInputElement>) => onSetText(event.target.value)
+const InputField: FC <FieldProps> = ({text, onSetText}) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => onSetText(event.target.value)
 
   return (
-    <input value={text} onChange = { handleonChange }></input>
+    <input value={text} onChange = { handleChange }></input>
   )
 }
 

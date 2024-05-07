@@ -2,13 +2,13 @@ import {FC} from 'react';
 import InputField from "./InputField";
 
 
-type taskProps  = {
+type TaskProps  = {
   text: string,
   onAddTodo: () => void,
   onSetText: (text: string) => void
 };
 
-const TaskInput: FC <taskProps> = ({text, onAddTodo, onSetText}) => {
+const TaskForm: FC <TaskProps> = ({text, onAddTodo, onSetText}) => {
 
   return (
     <label className='app__task'>
@@ -18,4 +18,4 @@ const TaskInput: FC <taskProps> = ({text, onAddTodo, onSetText}) => {
   )
 }
 
-export default TaskInput
+export default TaskForm

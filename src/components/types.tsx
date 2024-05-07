@@ -5,5 +5,3 @@ export type TodoType = {
   text: string,
   isCompleted: boolean
 }
-export type TodosType = Array<TodoType>
-

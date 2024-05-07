@@ -1,55 +1,53 @@
 import './App.css.scss';
 import { useState } from 'react';
 import TodoList from "./TodoList";
-import TaskInput from "./TaskInput";
+import TaskForm from "./TaskForm";
 import Header from "./Header";
 import {
   TodoTextType,
-  TodosType
+  TodoType
 } from './types';
 
 function App() {
-  const [todos, hadleSetToDos] = useState<TodosType>([]);
-  const [text, hadleSetText] = useState<TodoTextType>('');
-
-  const handleUpdateTodos = (text: string) => {
-    hadleSetToDos([
-      ...todos, {
-        id: new Date().toISOString(),
-        text,
-        isCompleted: false
-      }
-    ]);
-  }
+  const [todos, setToDos] = useState<Array <TodoType> >([]);
+  const [text, setText] = useState<TodoTextType>('');
 
   const handleAddTodo = () => {
     if(text.trim().length !== 0){
-      handleUpdateTodos(text)
-      hadleSetText('');
+      setToDos((prevTodos) => [
+        ...prevTodos, {
+          id: new Date().toISOString(),
+          text,
+          isCompleted: false
+        }
+      ]);
+      setText('');
     }
   };
 
   const handleRemoveTodo = (todoId: string) => {
-    hadleSetToDos(todos.filter((todo) => todo.id !== todoId))
+    setToDos((prevTodos) => prevTodos.filter((todo) => todo.id !== todoId))
   }
 
   const handelToggleTodoComplete = (todoId: string) => {
-    hadleSetToDos(todos.map((todo) => {
-      if(todo.id !== todoId){
-        return todo;
-      }
-      
-      return {
-        ...todo,
-        isCompleted: !todo.isCompleted
-      }
-    }))
+    setToDos((prevTodos) => 
+      prevTodos.map((todo) => {
+        if(todo.id !== todoId){
+          return todo;
+        }
+        
+        return {
+          ...todo,
+          isCompleted: !todo.isCompleted
+        }
+      })
+    )
   }
 
   return (
     <div className="app">
       <Header />
-      <TaskInput text = {text} onAddTodo = {handleAddTodo} onSetText = {hadleSetText} />
+      <TaskForm text = {text} onAddTodo = {handleAddTodo} onSetText = {setText} />
       <TodoList todos={todos} onToggleTodoComplete={handelToggleTodoComplete} onRemoveTodo={handleRemoveTodo}/>
     </div>
   );

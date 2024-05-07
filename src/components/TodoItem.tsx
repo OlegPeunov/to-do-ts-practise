@@ -2,17 +2,18 @@
 import {FC} from 'react';
 import { TodoType } from './types';
 
-type TodoItemProps = {
+interface TodoItemProps {
+  todo: TodoType,
   onRemoveTodo: (todoId: string) => void,
   onToggleTodoComplete: (todoId: string) => void
 };
 
-const TodoItem: FC <TodoType & TodoItemProps> = ({id, text, isCompleted, onRemoveTodo, onToggleTodoComplete}) => {
+const TodoItem: FC <TodoItemProps> = ({todo, onRemoveTodo, onToggleTodoComplete}) => {
   return (
-    <li className='todo'key = {id}>
-      <input type = 'checkbox' checked={isCompleted} onChange={() => onToggleTodoComplete(id)}></input>
-      <span className='todo__text'>{text}</span>
-      <span className='todo__delete' onClick={() => onRemoveTodo(id)}>&times;</span>
+    <li className='todo'key = {todo.id}>
+      <input type = 'checkbox' checked={todo.isCompleted} onChange={() => onToggleTodoComplete(todo.id)}></input>
+      <span className='todo__text'>{todo.text}</span>
+      <span className='todo__delete' onClick={() => onRemoveTodo(todo.id)}>&times;</span>
     </li>
   )
 }
