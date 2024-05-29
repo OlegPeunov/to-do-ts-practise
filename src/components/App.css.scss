@@ -1,0 +1,33 @@
+.app {
+  text-align: center;
+
+  &__header {
+    background-color: #282c34;
+    min-height: 50px;
+  }
+  &__task {
+    position: relative;
+    top: 10px;
+  }
+  &__todos{
+    position: relative;
+    top: 18px;
+    list-style: none;
+  }
+}
+
+.todo{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+
+  &__delete{
+    color: red;
+    cursor: pointer;
+  }
+}
+
+input:checked + .todo__text{
+  text-decoration: line-through;
+}
