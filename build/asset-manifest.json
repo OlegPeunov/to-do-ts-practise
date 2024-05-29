@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/to-do-ts-practise/static/css/main.c613cf0e.css",
+    "main.js": "/to-do-ts-practise/static/js/main.fa354eef.js",
+    "index.html": "/to-do-ts-practise/index.html",
+    "main.c613cf0e.css.map": "/to-do-ts-practise/static/css/main.c613cf0e.css.map",
+    "main.fa354eef.js.map": "/to-do-ts-practise/static/js/main.fa354eef.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c613cf0e.css",
+    "static/js/main.fa354eef.js"
+  ]
+}
